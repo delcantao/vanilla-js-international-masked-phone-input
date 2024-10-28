@@ -3,15 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Trying vanilla JS mask input</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
 </head>
-<body>
-<label for="phone-input">Phone</label>
-<input type="text" id="phone-input" placeholder="Enter phone number" />
+<body class=" bg-gray-100">
+
+<div class="flex items-center justify-center h-[80vh] flex-col">
+
+
+
+
+    <div>
+        <label for="phone-input" class="block text-sm font-medium leading-6 text-gray-900">Phone Number</label>
+        <div class="relative mt-2 rounded-md shadow-sm">
+
+
+            <input type="text" name="phone-number" id="phone-input" class="block w-full rounded-md border-0 py-1.5 p-4 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="+1 (555) 987-6543">
+        </div>
+
+        <div class="flex flex-col text-sm pt-10">
+            <div>Code Country: <span id="cc"></span></div>
+            <div>Raw Phone: <span id="rp"></span></div>
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
 
 <script src="../src/vanilla-mask-input-min.js"></script>
-<script src="../src/vanilla-mask-input.js"></script>
 <script>
-    vanillaMaskInput('#phone-input');
+    const input = vanillaMaskInput('#phone-input');
+
+
+    document.getElementById('phone-input').addEventListener('input', function(e) {
+
+
+        if (e.target.lfMask.valid) {
+            document.getElementById('rp').innerText = e.target.lfMask.raw;
+            document.getElementById('cc').innerText = e.target.lfMask.mask.cc;
+        } else {
+            document.getElementById('rp').innerText = '';
+            document.getElementById('cc').innerText = '';
+        }
+    });
 
 </script>
 </body>
