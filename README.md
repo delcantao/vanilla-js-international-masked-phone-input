@@ -17,8 +17,13 @@ This repository provides a simple and lightweight input masking solution for int
 Add the script to your HTML file:
 
 ```html
-<script src="path/to/vanilla-mask-input.js"></script>
+<script src="path/to/your/local/folder/vanilla-mask-input.js"></script>
 ```
+or
+```html
+<script src="https://cdn.delcantao.dev/js/vanilla-mask-input-min.js"></script>
+```
+
 
 ### 2. Initialize the Mask
 
